@@ -3,16 +3,21 @@
 ##  Description du Projet
 Ce dépôt contient la simulation complète d'une infrastructure réseau d'entreprise réalisée sur **Cisco Packet Tracer**. Le projet vise à interconnecter un site central (Siège) avec deux sites distants (Agences) en assurant la redondance, la segmentation et la connectivité de bout en bout.
 
-##  Technologies et Protocoles Utilisés
+### Technologies et Protocoles Utilisés
+
 Le projet met en œuvre les technologies suivantes :
+
 * **Commutation (Layer 2) :**
-    * VLANs (10, 20, 60, 99) pour la segmentation.
+    * VLANs (10, 20, 30, 50, 60) pour la segmentation.
     * Trunking (802.1Q).
+    * VLAN natif (50) pour la sécurité.
     * EtherChannel (LACP) pour l'agrégation de liens.
+
 * **Routage (Layer 3) :**
     * Routage Inter-VLAN (Router-on-a-Stick).
-    * **Routage Statique** pour la connectivité WAN (Siège ↔ Agences).
+    * Routage Statique pour la connectivité WAN (Siège ↔ Agences).
     * Routes par défaut sur les sites distants (Stub Networks).
+
 * **Adressage :** IPv4 (VLSM).
 
 ##  Topologie du Réseau
@@ -24,7 +29,7 @@ L'architecture se compose de :
 ##  Détails de la Configuration
 * **R1 (Siège) :** Configure avec des routes statiques vers le réseau WAN interconnectant R2 et R3.
 * **R2 & R3 (Agences) :** Configurés avec une route par défaut (`0.0.0.0/0`) pointant vers le Siège (R1).
-* **Switchs :** Configuration des VLANs de données et VLAN natif (99) pour la sécurité.
+* **Switchs :** Configuration des VLANs de données et VLAN natif (50) pour la sécurité.
 
 ##  Tests de Validation
 Le réseau a été validé avec succès via :
@@ -39,4 +44,4 @@ Le réseau a été validé avec succès via :
 
 ---
 **Réalisé par :** Imad Smahi
-**Date :** Décembre 2025
+**Date :**  Décembre 2025
