@@ -39,8 +39,8 @@ Le réseau a été validé avec succès via :
 
 ##  Comment utiliser
 1.  Cloner ce dépôt.
-2.  Ouvrir le fichier `.pkt` avec **Cisco Packet Tracer** (version 8.x ou supérieure).
-3.  Utiliser les PCs pour effectuer des tests de connectivité (Ping/Tracert).
+2.  Ouvrir le fichier `.pkt` avec **Cisco Packet Tracer** .
+3.  Utiliser les PCs pour effectuer des tests de connectivité .
 
 ---
 **Réalisé par :** Imad Smahi
