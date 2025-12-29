@@ -3,7 +3,7 @@
 ##  Description du Projet
 Ce dépôt contient la simulation complète d'une infrastructure réseau d'entreprise réalisée sur **Cisco Packet Tracer**. Le projet vise à interconnecter un site central (Siège) avec deux sites distants (Agences) en assurant la redondance, la segmentation et la connectivité de bout en bout.
 
-## 🛠 Technologies et Protocoles Utilisés
+##  Technologies et Protocoles Utilisés
 Le projet met en œuvre les technologies suivantes :
 * **Commutation (Layer 2) :**
     * VLANs (10, 20, 60, 99) pour la segmentation.
