@@ -1,46 +1,40 @@
-# Projet de Conception et Routage Réseau (Packet Tracer)
+# Projet Réseau : Infrastructure Segmentée Multisite (VLANs & Routage Statique)
+
+**Module :** Réseaux Informatiques  
+**Encadrant :** Prof. Azeddine KHIAT  
+**Année :** 2025/2026
 
 ##  Description du Projet
-Ce dépôt contient la simulation complète d'une infrastructure réseau d'entreprise réalisée sur **Cisco Packet Tracer**. Le projet vise à interconnecter un site central (Siège) avec deux sites distants (Agences) en assurant la redondance, la segmentation et la connectivité de bout en bout.
+Ce dépôt contient les livrables du projet final de conception réseau. L'objectif est de déployer une architecture d'entreprise simulant un siège social et deux sites distants, en mettant l'accent sur la segmentation, la redondance et l'optimisation des flux.
 
-### Technologies et Protocoles Utilisés
+## 🛠️ Technologies Déployées
+* **Switching (L2) :**
+    * VLANs (802.1Q) : Segmentation en 5 réseaux logiques (Utilisateurs, Natif, Admin).
+    * EtherChannel (LACP) : Agrégation de liens entre les commutateurs S1 et S2.
+    * Sécurité : Configuration du VLAN Natif 50.
+* **Routing (L3) :**
+    * Router-on-a-Stick : Routage inter-VLAN sur R1.
+    * Routage Statique : Interconnexion WAN entre R1, R2 et R3.
+    * Route par défaut : Gestion du trafic de retour sur les sites distants.
 
-Le projet met en œuvre les technologies suivantes :
+##  Structure du Dépôt
+* `/Fichiers_PKT` : Le fichier de simulation Cisco Packet Tracer (.pkt).
+* `/Captures` : Captures d'écran validant le fonctionnement (Ping, Traceroute, Show commands).
+* `/Rapport` : Version PDF du rapport de déploiement.
 
-* **Commutation (Layer 2) :**
-    * VLANs (10, 20, 30, 50, 60) pour la segmentation.
-    * Trunking (802.1Q).
-    * VLAN natif (50) pour la sécurité.
-    * EtherChannel (LACP) pour l'agrégation de liens.
+## Plan d'Adressage Rapide
+| Équipement | Interface | IP / Masque | Description |
+| :--- | :--- | :--- | :--- |
+| **R1** | Fa0/0.10 | 172.18.10.14 /28 | Gateway VLAN 10 |
+| **R1** | S0/3/0 | 10.0.30.177 /30 | Vers R2 |
+| **S1/S2** | Po1 | - | Trunk (Natif 50) |
 
-* **Routage (Layer 3) :**
-    * Routage Inter-VLAN (Router-on-a-Stick).
-    * Routage Statique pour la connectivité WAN (Siège ↔ Agences).
-    * Routes par défaut sur les sites distants (Stub Networks).
+##  Validation
+Le projet a été validé par les tests suivants :
+1.  **Ping Inter-VLAN :** Fonctionnel.
+2.  **Traceroute WAN :** Routage correct via les sauts R1 -> Rx.
+3.  **Accès SSH/Telnet :** Gestion accessible via VLAN 60.
 
-* **Adressage :** IPv4 (VLSM).
-
-##  Topologie du Réseau
-L'architecture se compose de :
-1.  **Siège (R1 + S1/S2) :** Héberge les VLANs utilisateurs et gestion. Utilise l'agrégation de liens entre les commutateurs.
-2.  **Agence 1 (R2) :** Site distant connecté au siège via liaison série.
-3.  **Agence 2 (R3) :** Site distant connecté au siège, assurant une redondance de chemin.
-
-##  Détails de la Configuration
-* **R1 (Siège) :** Configure avec des routes statiques vers le réseau WAN interconnectant R2 et R3.
-* **R2 & R3 (Agences) :** Configurés avec une route par défaut (`0.0.0.0/0`) pointant vers le Siège (R1).
-* **Switchs :** Configuration des VLANs de données et VLAN natif (50) pour la sécurité.
-
-##  Tests de Validation
-Le réseau a été validé avec succès via :
-* **Ping Inter-VLAN :** Communication réussie entre PC VLAN 10 et PC VLAN 20.
-* **Ping WAN :** Connectivité établie entre le Siège et les interfaces des Agences.
-* **Traceroute :** Vérification du chemin et des sauts (Hops) entre le LAN et le WAN.
-
-##  Comment utiliser
-1.  Cloner ce dépôt.
-2.  Ouvrir le fichier `.pkt` avec **Cisco Packet Tracer** .
-3.  Utiliser les PCs pour effectuer des tests de connectivité .
 
 ---
 **Réalisé par :** Imad Smahi
